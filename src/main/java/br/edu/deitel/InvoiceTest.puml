@@ -1,0 +1,25 @@
+@startuml
+skinparam classAttributeIconSize 0
+class Invoice {
+            - numero : String
+            - descricao : String
+            - quantidade : int
+            - preco : double
+            + Invoice(numero : String, descricao : String, quantidade : int, preco : double)
+            + getNumero() : String
+            + setNumero(numero : String) : void
+            + getDescricao() : String
+            + setDescricao(descricao : String) : void
+            + getQuantidade() : int
+            + setQuantidade(quantidade : int) : void
+            + getPreco() : double
+            + setPreco(preco : double) : void
+            + getInvoiceAmount() : double
+        }
+
+        class InvoiceTest {
+            + main(args : String[]) : void {static}
+        }
+    }
+
+@enduml

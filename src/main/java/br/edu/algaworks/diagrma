@@ -1,0 +1,7 @@
+@startuml
+class Cliente
+class Endereco
+
+Usuario "1" -- "N" Cliente
+@enduml
+

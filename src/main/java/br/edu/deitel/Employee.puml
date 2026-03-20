@@ -1,0 +1,9 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Employee {
+
+    private String nome;
+    private String sobreNome;
+    private double salario;
+    public Employee(String nome, StringsobreNome, double salario);
+@enduml

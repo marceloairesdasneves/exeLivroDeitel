@@ -1,0 +1,6 @@
+graph TD
+    A[Início: Chamar setQuantity] --> B{A quantidade é < 0?};
+    B -- Sim --> C[Definir quantidade como 0];
+    B -- Não --> D[Definir quantidade como o valor fornecido];
+    C --> E[Fim: Quantidade Validada];
+    D --> E;

@@ -1,0 +1,46 @@
+@startuml
+autonumber
+skinparam SequenceMessageAlign center
+
+participant JVM as "JVM/Sistema"
+participant T as "InvoiceTest"
+participant I as "invoice1 : Invoice"
+
+title Diagrama de Sequência: Processamento de Fatura
+
+activate JVM
+JVM -> T : main(args)
+activate T
+
+Note over T : Início da execução (main)
+
+T -> I : new Invoice("1", "Caneca", 10, 250.00)
+activate I
+Note right of I : O construtor valida e define os dados
+I -->> T : Retorno da referência do objeto
+deactivate I
+
+T -> I : getPartNumber()
+activate I
+I -->> T : "1"
+deactivate I
+
+T -> I : getPartDescription()
+activate I
+I -->> T : "Caneca"
+deactivate I
+
+T -> I : getInvoiceAmount()
+activate I
+I -> I : getQuantity()
+I -> I : getPricePerItem()
+Note right of I : Cálculo: 10 * 250.00
+I -->> T : 2500.00
+deactivate I
+
+Note over T : Exibição dos dados e do total da fatura (Caneca)
+
+T ->> JVM : Fim da execução
+deactivate T
+deactivate JVM
+@enduml
