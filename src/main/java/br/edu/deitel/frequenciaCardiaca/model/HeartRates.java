@@ -6,17 +6,18 @@ public class HeartRates {
     private int dia;
     private int mes;
     private int ano;
+    private final int anoAtual;
 
-    public HeartRates(String nome, String sobrenome, int dia, int mes, int ano) {
+    public HeartRates(String nome, String sobrenome, int dia) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.dia = dia;
-        this.mes = mes;
-        this.ano = ano;
+        this.anoAtual = java.time.Year.now().getValue();
     }
-
-    //method get/set
-
+    public HeartRates() {
+        this("", "", 0);
+    }
+   //method get/set
     public String getNome() {
         return nome;
     }
@@ -52,20 +53,26 @@ public class HeartRates {
     public int getAno() {
         return ano;
     }
-
     public void setAno(int ano) {
-        this.ano = ano;
+        if(ano > anoAtual){
+            System.out.println("Ano de nascimento não pode ser maior que o ano atual.");
+        }else{
+            this.ano = ano;
+        }
+
     }
-    //specific methods
     public int calcularIdadeAnos(){
-        return this.ano - this.dia;
+        int anoNasc = this.ano;
+        return anoAtual - anoNasc;
     }
     public int calcularFreqCardiacaMax(){
-        return this.mes - this.dia;
+        final int frequencia = 220;
+        return frequencia - calcularIdadeAnos();
     }
-    public int calcularFreqCardiacaAlvo(){
-        return this.mes - this.dia;
+    public String calcularFreqCardiacaAlvo(){
+        int freqCardiacaMax = calcularFreqCardiacaMax();
+        double freqCardiacaAlvoMin = freqCardiacaMax * 0.5;
+        double freqCardiacaAlvoMax = freqCardiacaMax * 0.85;
+        return String.format("%.0f - %.0f", freqCardiacaAlvoMin, freqCardiacaAlvoMax);
     }
-
-
 }//endclass
