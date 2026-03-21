@@ -9,6 +9,7 @@ public class CandidatoService {
 
     }
     public void alterarCandidato(Candidato candidato) {
+            System.out.println("Candidato " + candidato.getCpf() + " alterado para " + candidato.getNome());
 
     }
 }
